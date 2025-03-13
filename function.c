@@ -3,32 +3,41 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+void clearInputBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
 
 Node* createNode(char *key,char *description){  //返回一个node类型的指针，createNode
-    Node* newNode = (Node*) malloc(sizeof(Node));
 
-    if(key ==NULL){
-        printf("Please enter the value of key!\n");
-        scanf(" %29s",newNode->key);
+    if(key ==NULL || strlen(key) == 0){
+        printf("Error: Key can not be empty !\n");
+        return NULL;
+    }else if(description ==NULL || strlen(description) == 0){
+        printf("Error: Description can not be empty!\n");
+        return NULL;
     }else{
-        strncpy(newNode->key ,key ,sizeof(newNode->key)-1);  //将输入过来的内容复制到节点上，这一步可以防止溢出
-        //newNode->key[-1] = '\0';  不可以这样，因为合法的索引范围是0-29
-        newNode->key[sizeof(newNode->key)-1] = '\0';
+        Node* newNode = (Node*) malloc(sizeof(Node));
+
+        if (!newNode) {
+            printf("Error: Memory allocation failed.\n");
+            return NULL;
+        }
+    
+        strncpy(newNode->key, key, sizeof(newNode->key) - 1);
+        newNode->key[sizeof(newNode->key) - 1] = '\0';
+    
+    
+        strncpy(newNode->description, description, sizeof(newNode->description) - 1);
+        newNode->description[sizeof(newNode->description) - 1] = '\0';
+    
+        newNode->left = NULL;
+        newNode->right = NULL;
+    
+        return newNode;
     }
 
-    if(description ==NULL){
-        printf("Please enter the content of description!\n");
-        scanf(" %199s",newNode->description);
-    }else{
-        strncpy(newNode->description ,description ,sizeof(newNode->description)-1);  //将输入过来的内容复制到节点上，这一步可以防止溢出
-        newNode->description[sizeof(newNode->description)-1] = '\0';
-    }
 
-    newNode->left = NULL;
-    newNode->right = NULL;
-
-    return newNode;
 
 }
 
@@ -59,6 +68,7 @@ int treeEmpty(Tree *tree){
 void insertNode(Node *node, Tree *tree){
     if(treeEmpty(tree)){
     tree->root = node;
+    printf("The node %s had been inserted as root node successfully!\n",node->key);
     return;  //这里假如不添加会怎么样？
     }
 
@@ -68,18 +78,23 @@ void insertNode(Node *node, Tree *tree){
         if (strcmp(node->key,current_node->key)>0){
             if(current_node->right == NULL){
                 current_node->right = node;
+                printf("The node %s had been inserted to right of %s!\n",node->key,current_node->key);
+                return;
             }
             current_node = current_node->right;
-
-        }else if (strcmp(node->key,current_node->key)<0){
+}
+        if (strcmp(node->key,current_node->key)<0){
             if(current_node->left == NULL){
                 current_node->left = node;
+                printf("The node %s had been inserted to left of %s!\n",node->key,current_node->key);
+                return;
             }
             current_node = current_node->left;
-
-        }else{
+        }
+        if(strcmp(node->key,current_node->key)==0){
             printf("The node already exists!\n");
             free(node);
+            return; // 这里插入防止二次循环。
         }
         
     }

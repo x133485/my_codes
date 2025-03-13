@@ -10,10 +10,14 @@ int main(){
     int treeCount = 0;
     int nodeCount = 0;
 
+    printf("Welcome to the System !\n");
+
     while (1)
     {   
         int choice;
-        printf("Welcome to the System !\n");
+        
+        printf("\n");
+
         printf("Input 0 to quit.\n");
         printf("Input 1 for creating a new node:\n");
         printf("Input 2 for printing the existing node:\n");
@@ -30,18 +34,47 @@ int main(){
             char key[30];
             char description[200];
 
-            printf("Please input the key:\n");
-            fgets(key,29,stdin);
-            key[strcspn(key, "\n")] = '\0';
+            printf("Please input the key(Max 29 characters):\n");
+            fgets(key,sizeof(key),stdin); //fgets第二个参数是缓冲区大小的意思
 
-            printf("Please input the description:\n");
-            fgets(description,199,stdin);
-            description[strcspn(description, "\n")] = '\0';
+            if (strchr(key, '\n') == NULL) {  //检查是否有换行符
+                printf("Error: Key is too long (max 29 characters allowed).\n");
+                clearInputBuffer();
+                continue;
+            } else {
+                key[strcspn(key, "\n")] = '\0'; // 移除换行符
+            }
 
-            nodes[nodeCount] = createNode(key,description);
-            printf("Node create successfully!\n");
-            printf("============================\n");
-            nodeCount++;
+            printf("Please input the description (max 199 characters):\n");
+            fgets(description, sizeof(description), stdin);
+
+            if (strchr(description, '\n') == NULL) {
+                printf("Error: Description is too long (max 199 characters allowed).\n");
+                clearInputBuffer();
+                continue;
+            } else {
+                description[strcspn(description, "\n")] = '\0';
+            }
+
+            int duplicate = 0;
+            for(int i = 0; i< nodeCount;i++){
+                if(strcmp(nodes[i]->key,key) == 0){
+                    duplicate = 1;
+                    break;
+                }
+            }
+
+            if (duplicate){
+                printf("Error: the node had already exists. Create the key failed!\n");
+                printf("Exist key: %s\n",key);
+                printf("============================\n");
+            }else{
+                nodes[nodeCount] = createNode(key,description);
+                printf("Node %d create successfully!\n",nodeCount+1);
+                printf("============================\n");
+                nodeCount++;
+            }
+            
 
         }else if (choice ==2)
         {
@@ -59,6 +92,57 @@ int main(){
         }else if (choice ==0){
             printf("Good bye \n");
             break;
+        }else if(choice == 3){
+            trees[treeCount] = createTree();
+            treeCount++;
+            printf("New tree %d created successfully!\n",treeCount);
+            printf("============================\n");
+        }else if (choice ==4){
+            if(treeCount ==0){
+                printf("Please create a tree first before checking.\n");
+                printf("============================\n");
+            }else{
+                int num_tree;
+
+                printf("Existing trees number %d.\n",treeCount);
+                printf("Select which tree you want to check. Select from 1 to %d.\n",treeCount);
+                scanf(" %d",&num_tree);
+
+                if(num_tree < 1 || num_tree >treeCount){
+                    printf("The number you input is out of the scope, please select from 1-%d.\n",treeCount);
+                }else{
+                    if(treeEmpty(trees[num_tree-1])){
+                        printf("The tree you selected is empty!\n");
+                        printf("============================\n");
+                    }else{
+                        printf("The tree is not empty.\n");
+                        printf("============================\n");
+                    }
+                }
+            }
+        }else if (choice == 5){
+            int tree_num;
+            int node_num;
+            if(treeCount ==0 ||nodeCount ==0){
+                printf("Please make sure you had created tree and a node first.\n");
+
+            }else{
+                printf("Which tree num  you want to insert? Select only one number from 1-%d.\n",treeCount);
+                scanf(" %d",&tree_num);
+                printf("And which node num you want to insert. Select node number from 1-%d.\n",nodeCount);
+
+                for(int i =0;i<nodeCount;i++){
+                    printf("Node %d, key: %s\n",i+1,nodes[i]->key);
+                }
+
+                scanf(" %d",&node_num);
+                if (0 <tree_num && tree_num <=treeCount && 0<node_num && node_num<=nodeCount){
+                    insertNode(nodes[node_num-1],trees[tree_num-1]);
+                }else{
+                    printf("The tree num you selected or the node num you selected is out of bound, please select again.\n");
+                }
+                
+            }
         }
         
     }

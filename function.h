@@ -17,6 +17,6 @@ void printNode(Node *node);
 Tree* createTree();
 int treeEmpty(Tree *tree);
 void insertNode(Node *node, Tree *tree);  
-
+void clearInputBuffer();
 
 #endif 
