@@ -10,36 +10,26 @@ void clearInputBuffer() {
 
 Node* createNode(char *key,char *description){  //返回一个node类型的指针，createNode
 
-    if(key ==NULL || strlen(key) == 0){
-        printf("Error: Key can not be empty !\n");
+    Node* newNode = (Node*) malloc(sizeof(Node));
+    if (!newNode) {
+        printf("Error: Memory allocation failed.\n");
         return NULL;
-    }else if(description ==NULL || strlen(description) == 0){
-        printf("Error: Description can not be empty!\n");
-        return NULL;
-    }else{
-        Node* newNode = (Node*) malloc(sizeof(Node));
-
-        if (!newNode) {
-            printf("Error: Memory allocation failed.\n");
-            return NULL;
-        }
+    }
     
-        strncpy(newNode->key, key, sizeof(newNode->key) - 1);
-        newNode->key[sizeof(newNode->key) - 1] = '\0';
+    strncpy(newNode->key, key, sizeof(newNode->key) - 1);
+    newNode->key[sizeof(newNode->key) - 1] = '\0';
     
     
-        strncpy(newNode->description, description, sizeof(newNode->description) - 1);
-        newNode->description[sizeof(newNode->description) - 1] = '\0';
+    strncpy(newNode->description, description, sizeof(newNode->description) - 1);
+    newNode->description[sizeof(newNode->description) - 1] = '\0';
     
-        newNode->left = NULL;
-        newNode->right = NULL;
+    newNode->left = NULL;
+    newNode->right = NULL;
     
-        return newNode;
+    return newNode;
     }
 
 
-
-}
 
 void printNode(Node *node){
     if (node ==NULL){
@@ -98,7 +88,28 @@ void insertNode(Node *node, Tree *tree){
         }
         
     }
+       
+}
+
+int countNodes(Node* root){
+    if (root ==NULL){
+        return 0;
+    }else{
+        return 1+ countNodes(root->left) + countNodes(root->right);
+    }
+}
+
+void inorderPrint(Node *root,int n, int* count){
     
-    
-   
+    if(root ==NULL || *count > n ){
+        return;
+    }
+    inorderPrint(root->left, n, count);
+
+    if (*count < n) {
+        printf("%s ", root->key);
+        (*count)++;
+    }
+
+    inorderPrint(root->right, n, count);
 }

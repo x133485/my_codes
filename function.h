@@ -18,5 +18,7 @@ Tree* createTree();
 int treeEmpty(Tree *tree);
 void insertNode(Node *node, Tree *tree);  
 void clearInputBuffer();
+void inorderPrint(Node* root,int n, int *count);
+int countNodes(Node* root);
 
 #endif 

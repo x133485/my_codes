@@ -24,6 +24,7 @@ int main(){
         printf("Input 3 for creating a new tree:\n");
         printf("Input 4 for checking the tree empty or not:\n");
         printf("Input 5 for inserting the node to existing tree:\n");
+        printf("Input 6 performing inorder traversal of binary tree:\n");
 
         printf("Please enter the number:\n");
         scanf(" %d",&choice);
@@ -36,7 +37,7 @@ int main(){
 
             printf("Please input the key(Max 29 characters):\n");
             fgets(key,sizeof(key),stdin); //fgets第二个参数是缓冲区大小的意思
-
+            
             if (strchr(key, '\n') == NULL) {  //检查是否有换行符
                 printf("Error: Key is too long (max 29 characters allowed).\n");
                 clearInputBuffer();
@@ -44,7 +45,13 @@ int main(){
             } else {
                 key[strcspn(key, "\n")] = '\0'; // 移除换行符
             }
-
+            
+            //检查是否为空
+            if (strlen(key) == 0) {
+                printf("Error: Key cannot be empty!\n");
+                continue; 
+            }            
+            
             printf("Please input the description (max 199 characters):\n");
             fgets(description, sizeof(description), stdin);
 
@@ -54,7 +61,12 @@ int main(){
                 continue;
             } else {
                 description[strcspn(description, "\n")] = '\0';
-            }
+                }
+
+            if (strlen(description) == 0) {
+                printf("Error: Description cannot be empty!\n");
+                continue; 
+            }   
 
             int duplicate = 0;
             for(int i = 0; i< nodeCount;i++){
@@ -139,10 +151,37 @@ int main(){
                 if (0 <tree_num && tree_num <=treeCount && 0<node_num && node_num<=nodeCount){
                     insertNode(nodes[node_num-1],trees[tree_num-1]);
                 }else{
-                    printf("The tree num you selected or the node num you selected is out of bound, please select again.\n");
+                    printf("The tree num you selected or the node num you selected is out of bound.\n");
                 }
                 
             }
+        }else if (choice==6){
+            int num;
+            int tree_num;
+            int count =0;
+
+            printf("Select which tree you want to traversal:\n");
+            printf("Select from 1-%d\n",treeCount);
+            scanf(" %d",&tree_num);
+            
+            if(0<tree_num && tree_num<treeCount+1){
+                int total_nodes = countNodes(trees[tree_num-1]->root);
+                printf("How many nodes you want to traversal? Select from 1-%d.\n",total_nodes);
+                scanf(" %d",&num);
+                if(num>0 && num<total_nodes+1){
+                    inorderPrint(trees[tree_num-1]->root,num, &count);
+                    printf("\n======================\n");
+                }else{
+                    printf("The node num you select is out of bound.\n");
+                }
+
+                continue;
+                
+            }else{
+                printf("The tree num you select is out of bound, please select again.\n");
+                continue;
+            }
+            
         }
         
     }
