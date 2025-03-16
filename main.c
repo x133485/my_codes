@@ -25,6 +25,8 @@ int main(){
         printf("Input 4 for checking the tree empty or not:\n");
         printf("Input 5 for inserting the node to existing tree:\n");
         printf("Input 6 performing inorder traversal of binary tree:\n");
+        printf("Input 7 for search a node with given key:\n");
+        printf("Input 8 for deleting a node.\n");
 
         printf("Please enter the number:\n");
         scanf(" %d",&choice);
@@ -149,7 +151,14 @@ int main(){
 
                 scanf(" %d",&node_num);
                 if (0 <tree_num && tree_num <=treeCount && 0<node_num && node_num<=nodeCount){
-                    insertNode(nodes[node_num-1],trees[tree_num-1]);
+                    //insertNode(nodes[node_num-1],trees[tree_num-1]);  This will make tree influence each other
+
+                    Node *copyNode = createNode(nodes[node_num-1]->key, nodes[node_num-1]->description);
+                    if (copyNode != NULL) {
+                        insertNode(copyNode, trees[tree_num-1]);
+                    } else {
+                        printf("Failed to create a copy of the node.\n");
+                    }
                 }else{
                     printf("The tree num you selected or the node num you selected is out of bound.\n");
                 }
@@ -182,7 +191,55 @@ int main(){
                 continue;
             }
             
-        }
+        }else if(choice ==7){
+            char target[30];
+            int num;
+            Node *node;
+
+            printf("Input the key which you want to query:\n");
+            fgets(target,sizeof(target),stdin);
+            target[strcspn(target, "\n")] = '\0';
+
+            printf("Select which tree you want to query 1-%d:\n",treeCount);
+            scanf("%d",&num);
+            if (num >0 && num <treeCount+1){
+                node = search(trees[num-1]->root,target);
+                if (node !=NULL){
+                    printf("The node you want to query:%s.\n",node->key);
+                    printf("The description is :%s.\n",node->description);
+                    printf("============================\n");
+                }else{
+                    printf("Cannot find the key in the given tree.\n");
+                    printf("============================\n");
+                }                
+            }else{
+                printf("Please enter correct num.\n");
+
+            }
+        }else if(choice  ==8){
+            int tree_num;
+            char key[30];
+            Node *node;
+
+            printf("The node was on which tree? 1-%d:\n",treeCount);
+            scanf(" %d",&tree_num);
+            if (tree_num >0 && tree_num <treeCount+1){
+                printf("Input the key you want to delete:\n");
+                scanf(" %s",key);
+                node = search(trees[tree_num-1]->root,key);
+
+                if (node !=NULL){
+                    printf("The node you want to delete: %s.\n",node->key);
+                    printf("The description is : %s.\n",node->description);
+
+                    trees[tree_num-1]->root =  delete(trees[tree_num-1]->root,key);
+                    printf("Delete selected node successfully!\n");
+                }else{
+                    printf("Cannot  find the key you want to delete.\n");
+                }
+
+            }
+        }              
         
     }
     

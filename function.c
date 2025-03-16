@@ -58,7 +58,7 @@ int treeEmpty(Tree *tree){
 void insertNode(Node *node, Tree *tree){
     if(treeEmpty(tree)){
     tree->root = node;
-    printf("The node %s had been inserted as root node successfully!\n",node->key);
+    printf("The key %s had been inserted as root node successfully!\n",node->key);
     return;  //这里假如不添加会怎么样？
     }
 
@@ -68,7 +68,7 @@ void insertNode(Node *node, Tree *tree){
         if (strcmp(node->key,current_node->key)>0){
             if(current_node->right == NULL){
                 current_node->right = node;
-                printf("The node %s had been inserted to right of %s!\n",node->key,current_node->key);
+                printf("The key %s had been inserted to right of %s!\n",node->key,current_node->key);
                 return;
             }
             current_node = current_node->right;
@@ -76,7 +76,7 @@ void insertNode(Node *node, Tree *tree){
         if (strcmp(node->key,current_node->key)<0){
             if(current_node->left == NULL){
                 current_node->left = node;
-                printf("The node %s had been inserted to left of %s!\n",node->key,current_node->key);
+                printf("The key %s had been inserted to left of %s!\n",node->key,current_node->key);
                 return;
             }
             current_node = current_node->left;
@@ -112,4 +112,62 @@ void inorderPrint(Node *root,int n, int* count){
     }
 
     inorderPrint(root->right, n, count);
+}
+
+Node* search(Node *root, char *key){
+    if (root ==NULL || strcmp(root->key, key) == 0){
+        return root;
+    }
+
+    Node * result = NULL;
+
+    if (strcmp(key,root->key)>0){
+        result = search(root->right,key);
+    }else if (strcmp(key,root->key)<0){
+        result = search(root->left,key);
+    }
+
+    return result;
+
+}
+
+Node *delete(Node *root, char *key){  //返回删除节点后子树的根节点
+    if (root ==NULL){
+        return NULL;
+    }
+    //写终止条件
+    if (strcmp(root->key, key) == 0){
+        if(root->left ==NULL && root->right == NULL){
+            free(root);
+            return NULL;
+        }else if(root->left !=NULL && root->right == NULL){
+            free(root);
+            return root->left;
+        }else if(root->left ==NULL && root->right != NULL){
+            free(root);
+            return root->right;
+        }else{
+            Node *cur = root->right;
+
+            while (cur->left !=NULL){
+                cur = cur->left;
+            }
+            strcpy(root->key,cur->key); //把中序后继节点替换该目标节点
+            strcpy(root->description,cur->description);
+
+            //之前的只是复制了，原先节点还存在于二叉树，因此要进行删除
+            root->right = delete(root->right,cur->key);  
+
+        }
+        return root;
+    }
+    //递归条件
+    if(strcmp(key ,root->key)<0){
+        root->left = delete(root->left, key);
+    }else if (strcmp(key ,root->key)>0){
+        root->right = delete(root->right, key);
+    }
+
+    return root;
+
 }

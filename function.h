@@ -20,5 +20,7 @@ void insertNode(Node *node, Tree *tree);
 void clearInputBuffer();
 void inorderPrint(Node* root,int n, int *count);
 int countNodes(Node* root);
+Node* search(Node *root, char *key);
+Node *delete(Node *root, char *key);
 
 #endif 
