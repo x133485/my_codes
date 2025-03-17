@@ -1,0 +1,118 @@
+Jewel:A precious stone or gem.
+Ink:A colored fluid used for writing or printing.
+Earthquake:A sudden and violent shaking of the ground.
+Bridge:A structure spanning a physical obstacle, such as a river or road.
+Lemon:A sour, yellow citrus fruit.
+Lake:A large body of water surrounded by land.
+Lion:A large carnivorous feline animal.
+Universe:The totality of space and all that is contained within it.
+Desert:A barren or desolate area with little or no vegetation.
+Telescope:An optical instrument for viewing distant objects.
+Nest:A structure built by birds to lay eggs and raise their young.
+Xenon:A chemical element used in lighting and other applications.
+Octopus:A sea creature with eight arms.
+Nightingale:A small bird known for its beautiful song.
+Orange:A round, sweet citrus fruit with a tough skin.
+Xylophone:A musical instrument with wooden bars struck by mallets.
+Astronaut:A person trained to travel in spacecraft.
+Hamburger:A sandwich consisting of a cooked patty of ground meat in a bun.
+Ocean:A vast body of saltwater that covers most of the earth.
+Zebra:An African wild horse with black-and-white stripes.
+Necklace:A piece of jewelry worn around the neck.
+Drum:A percussion instrument played by striking with sticks or hands.
+Lantern:A portable light source, often enclosed in a protective casing.
+Zipper:A fastening device consisting of two strips of fabric with interlocking metal or plastic teeth.
+Airplane:A powered flying vehicle with fixed wings.
+Key:A small metal instrument used to open or lock a door or mechanism.
+Nebula:A cloud of gas and dust in space.
+Mountain:A large natural elevation of the earth's surface.
+Rainbow:A colorful arc in the sky caused by the refraction of sunlight through rain.
+Yogurt:A creamy dairy product made by fermenting milk.
+Jellyfish:A marine animal with a gelatinous body and tentacles.
+Unicorn:A mythical horse-like creature with a single horn on its forehead.
+Apple:A crisp, juicy fruit that comes in various colors.
+Juice:A liquid extracted from fruits or vegetables.
+Sunflower:A tall plant with a large yellow flower.
+River:A large natural stream of water flowing in a channel to the sea.
+Valley:A low area of land between hills or mountains.
+Notebook:A book of blank pages for writing notes.
+X-ray:A form of electromagnetic radiation used for medical imaging.
+Horizon:The line at which the earth's surface and the sky appear to meet.
+Eclipse:An obscuration of light from one celestial body by another.
+Mango:A tropical fruit with a sweet, juicy flesh.
+Jaguar:A large cat native to the Americas, with a spotted coat.
+Walrus:A large marine mammal with tusks.
+Wolf:A wild carnivorous mammal.
+Tree:A woody perennial plant with a single stem or trunk.
+Volcano:A mountain or hill with a crater through which lava, rock fragments, and gas are erupted.
+Ice cream:A cold, sweet dessert made from milk and sugar.
+House:A building where people live.
+Queen:The female ruler of an independent state.
+Koala:An Australian marsupial that lives in eucalyptus trees.
+Pencil:A writing instrument with a thin stick of graphite or a similar substance.
+Island:A piece of land surrounded by water.
+Star:A fixed luminous point in the night sky.
+Whale:A large marine mammal.
+Book:A set of written or printed pages bound together.
+Waterfall:A cascade of water falling from a height.
+Yarn:A long, continuous length of interlocked fibers used in knitting or weaving.
+Dolphin:A highly intelligent marine mammal.
+Eagle:A large bird of prey with a hooked beak.
+Owl:A nocturnal bird of prey with large eyes and a flat face.
+Glacier:A slowly moving mass or river of ice.
+Guitar:A string instrument played by plucking or strumming.
+Kangaroo:A large marsupial from Australia with powerful hind legs.
+Umbrella:A device for protection against rain or sun, consisting of a fabric canopy on a folding frame.
+Flower:A colorful and fragrant part of a plant that blooms.
+Lighthouse:A tower with a light that guides ships at sea.
+Quilt:A warm bed covering made of padding enclosed between layers of fabric.
+Strawberry:A sweet red fruit with tiny seeds on its surface.
+Rabbit:A small mammal with long ears and a fluffy tail.
+Diamond:A precious gemstone, known for its hardness and brilliance.
+Piano:A large musical instrument with keys that produce sound when struck.
+Mushroom:A type of fungus with a cap and stem.
+Turtle:A reptile with a hard shell that lives in water or on land.
+Violin:A string instrument played with a bow.
+Elephant:A large mammal with a trunk and tusks, native to Africa and Asia.
+Ostrich:A large flightless bird native to Africa.
+Compass:An instrument for determining direction.
+Globe:A spherical representation of the earth.
+Fountain:A jet or spray of water.
+Zucchini:A type of summer squash, often green in color.
+Dog:A domesticated animal known for its loyalty and companionship.
+Jacket:A piece of clothing worn on the upper body for warmth.
+Galaxy:A large collection of stars, gas, and dust bound together by gravity.
+Bicycle:A vehicle with two wheels, powered by pedaling.
+Radar:A system for detecting the presence and location of objects using radio waves.
+Egg:An oval or round object laid by a female bird, reptile, fish, or invertebrate.
+Frog:A small amphibian with smooth skin and long hind legs for leaping.
+Kite:A lightweight frame covered with paper or cloth, flown in the wind.
+Hat:A head covering worn for warmth, fashion, or protection.
+Yacht:A medium-sized sailboat or motorboat used for recreation.
+Insect:A small arthropod animal with six legs and a body divided into three parts.
+Banana:A long, yellow fruit that is sweet and soft inside.
+Cat:A small domesticated carnivorous mammal.
+Train:A series of connected vehicles traveling on rails.
+Butterfly:An insect with colorful wings and a slender body.
+Tiger:A large cat with a striped coat, native to Asia.
+Watermelon:A large, juicy fruit with a green rind and red flesh.
+Ant:A small insect that lives in colonies.
+Igloo:A dome-shaped shelter built from blocks of snow or ice.
+Helicopter:A type of aircraft with rotating blades that allow it to take off and land vertically.
+Penguin:A flightless bird that lives in cold regions.
+Yak:A long-haired ox domesticated in the Tibetan plateau.
+Robot:A machine capable of carrying out complex tasks automatically.
+Giraffe:A tall mammal with a long neck, native to Africa.
+Planet:A celestial body that orbits a star.
+Puzzle:A game or problem that tests ingenuity or knowledge.
+Cloud:A visible mass of condensed water vapor floating in the atmosphere.
+Vase:A container used for holding cut flowers.
+Moon:The natural satellite of the earth.
+Chocolate:A sweet treat made from cocoa beans.
+Forest:A large area covered chiefly with trees and undergrowth.
+Carrot:An orange root vegetable that is crunchy and sweet.
+Sailboat:A boat propelled by sails.
+Albatross:A large seabird with long wings, known for its gliding flight.
+Map:A visual representation of an area.
+Firefly:A beetle that emits light, also known as a lightning bug.
+Snake:A long, legless reptile.

@@ -27,6 +27,8 @@ int main(){
         printf("Input 6 performing inorder traversal of binary tree:\n");
         printf("Input 7 for search a node with given key:\n");
         printf("Input 8 for deleting a node.\n");
+        printf("Input 9 for reads data from a text file.\n");
+        printf("Input 10 for store existing tree to a text file.\n");
 
         printf("Please enter the number:\n");
         scanf(" %d",&choice);
@@ -234,11 +236,51 @@ int main(){
 
                     trees[tree_num-1]->root =  delete(trees[tree_num-1]->root,key);
                     printf("Delete selected node successfully!\n");
+                    printf("============================\n");
                 }else{
                     printf("Cannot  find the key you want to delete.\n");
+                    printf("============================\n");
                 }
 
+            }else{
+                printf("Please select correct tree num.\n");
             }
+        }else if(choice == 9){
+            char file[20];
+            Node *root = NULL;
+            printf("Which file you want to load text from:\n");
+            scanf(" %19s",file);
+            clearInputBuffer();
+
+            loadTextFile(file);
+            printf("============================\n");
+
+        }else if (choice ==10){
+            char filename[20];
+            int tree_num;
+            printf("Please input the file name.\n");
+            scanf(" %s",filename);
+            if(treeCount ==0){
+                printf("You need to create an not empty tree first.\n");
+                printf("============================\n");
+            }else{
+                printf("Which tree number you want to store. Select from 1-%d:\n",treeCount);
+                scanf(" %d",&tree_num);
+                if (tree_num >0 && tree_num <treeCount+1){
+                    if(treeEmpty(trees[tree_num-1])){
+                        printf("No need to insert empty tree to a file.\n");
+                        printf("============================\n");
+                    }else{
+                        storeTextFile(trees[tree_num-1]->root,filename);
+                        printf("Tree data successfully written to: %s\n", filename);
+                    }
+                }else{
+                    printf("Please select correct tree num.\n");
+                }
+                
+            }
+            
+
         }              
         
     }

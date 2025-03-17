@@ -171,3 +171,77 @@ Node *delete(Node *root, char *key){  //返回删除节点后子树的根节点
     return root;
 
 }
+
+void loadTextFile(char* filename){
+    FILE *file = fopen(filename,"r");
+    if (!file){
+        printf("File can not be found.\n");
+        return;
+    }
+
+    char line[200];
+    while (fgets(line, sizeof(line), file)) {
+        // 移除换行符
+        line[strcspn(line, "\r\n")] = '\0';
+
+        if (strlen(line) == 0) {
+            printf("Warning: Empty line skipped.\n");
+            continue;
+        }
+
+        // 检查是否以 "." 结尾
+        if (line[strlen(line) - 1] != '.') {
+            printf("Invalid format: Line does not end with a dot.\n");
+            continue;
+        }
+
+        // 查找冒号
+        char *colonPos = strchr(line, ':');
+        if (!colonPos) {
+            printf("Invalid format: Missing colon in line.\n");
+            continue;
+        }
+
+        *colonPos = '\0';
+        char *key = line;
+        char *description = colonPos + 1;
+
+        if (strlen(key) == 0 || strlen(description) == 0) {
+            printf("Invalid format: Key or description is empty.\n");
+            continue;
+        }
+
+        Node *newNode = createNode(key, description);
+        if (!newNode) {
+            printf("Memory allocation failed.\n");
+            continue;
+        }
+
+        printf("Key: %s, Description: %s\n", newNode->key, newNode->description);
+        free(newNode);
+
+    }
+    fclose(file);
+}
+
+void preorderWrite(Node *node,FILE *file){
+    if (node == NULL){
+        return;
+    }
+    fprintf(file,"%s:%s.\n",node->key,node->description);
+    preorderWrite(node->left,file);
+    preorderWrite(node->right,file);
+    
+}
+
+void storeTextFile(Node* root,char *filename){
+    FILE *file = fopen(filename,"w");
+    if (file == NULL){
+        printf("Can't open the file.\n");
+        return;
+    }
+
+    preorderWrite(root,file);
+    fclose(file);
+    
+}
